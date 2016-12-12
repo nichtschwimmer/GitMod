@@ -45,7 +45,7 @@ import com.apiomat.nativemodule.AuthState;
 @Model( moduleName = "GitMod",
     hooksClassNameTransient = "com.apiomat.nativemodule.gitmod.GitClassHooksTransient", 
     hooksClassNameNonTransient = "com.apiomat.nativemodule.gitmod.GitClassHooksNonTransient", 
-            isTransient = false,     requiredUserRoleCreate=UserRole.User, requiredUserRoleRead=UserRole.User,
+            isTransient = true,     requiredUserRoleCreate=UserRole.User, requiredUserRoleRead=UserRole.User,
     requiredUserRoleWrite=UserRole.Owner, restrictResourceAccess=false,
     allowedRolesCreate={}, allowedRolesRead={},
     allowedRolesWrite={}, allowedRolesGrant={})
