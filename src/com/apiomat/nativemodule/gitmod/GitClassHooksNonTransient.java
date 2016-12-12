@@ -52,32 +52,44 @@ public class GitClassHooksNonTransient<T extends GitClass> implements IModelHook
     @Override
     public void beforePost( GitClass obj, Request r )
     {
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
     }
 
     @Override
     public void afterPost( GitClass obj, Request r )
     {
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
     }
 
     @Override
     public void beforeGet( GitClass obj, Request r )
     {
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
     }
 
     @Override
     public boolean beforePut( GitClass objFromDB, GitClass obj, Request r )
     {
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
         return false;
     }
 
     @Override
     public void afterPut( GitClass obj, Request r )
     {
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
     }
 
     @Override
     public boolean beforeDelete( GitClass obj, Request r )
     {
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
         return false;
     }
 
@@ -91,35 +103,47 @@ public class GitClassHooksNonTransient<T extends GitClass> implements IModelHook
          *
          * If NULL is returned, unnecessary conversions are omitted and result is taken from database.
          */
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
         return null;
     }
 
     @Override
     public boolean beforePostRef( GitClass obj, Object referencedObject, String referenceName, Request r )
     {
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
         return false;
     }
 
     @Override
     public void afterPostRef( GitClass obj, Object referencedObject, String referenceName, Request r )
     {
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
     }
 
     @Override
     public boolean beforeDeleteRef( GitClass obj, Object referencedObject, String referenceName, Request r )
     {
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
         return false;
     }
 
     @Override
     public void afterDeleteRef( GitClass obj, Object referencedObject, String referenceName, Request r )
     {
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
     }
 
     @Override
     public <Z extends AbstractClientDataModel> List<Z> afterGetAllReferences( List<Z> objects, String query,
         String referenceName, Request request )
     {
+    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+        GitMod.AOM.log( request.getApplicationName( ), "hello from " + method );
             return null; // return objects here if you changed sth; returning null prevents unnecessary conversions
     }
 }
