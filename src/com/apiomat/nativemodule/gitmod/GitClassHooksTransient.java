@@ -55,7 +55,7 @@ public class GitClassHooksTransient<T extends GitClass> implements IModelHooksTr
     {
     	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
     	GitMod.AOM.logError( r.getApplicationName( ), "hello from method " + methodName );
-        return null;
+        return "";
     }
 
     @Override

@@ -52,16 +52,16 @@ public class GitClassHooksNonTransient<T extends GitClass> implements IModelHook
     @Override
     public void beforePost( GitClass obj, Request r )
     {
-    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
-        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
-        GitMod.AOM.logError( r.getApplicationName( ), "hello from " + method );
+//    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+//        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
+//        GitMod.AOM.logError( r.getApplicationName( ), "hello from " + method );
     }
 
     @Override
     public void afterPost( GitClass obj, Request r )
     {
-    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
-        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
+//    	String method = new Object(){}.getClass().getEnclosingMethod().getName();
+//        GitMod.AOM.log( r.getApplicationName( ), "hello from " + method );
     }
 
     @Override
