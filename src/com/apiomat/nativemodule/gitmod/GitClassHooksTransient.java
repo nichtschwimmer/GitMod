@@ -53,35 +53,47 @@ public class GitClassHooksTransient<T extends GitClass> implements IModelHooksTr
     @Override
     public String doPost( GitClass obj, Request r )
     {
+    	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
+    	GitMod.AOM.logError( r.getApplicationName( ), "hello from method " + methodName );
         return null;
     }
 
     @Override
     public void doPut( GitClass obj, Request r )
     {
+    	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
+    	GitMod.AOM.logError( r.getApplicationName( ), "hello from method " + methodName );
     }
 
     @Override
     public GitClass doGet( String foreignId, Request r )
     {
+    	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
+    	GitMod.AOM.logError( r.getApplicationName( ), "hello from method " + methodName );
         return null;
     }
 
     @Override
     public boolean doDelete( String foreignId, Request r )
     {
+    	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
+    	GitMod.AOM.logError( r.getApplicationName( ), "hello from method " + methodName );
         return false;
     }
 
     @Override
     public List<GitClass> doGetAll( String query, Request r )
     {
+    	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
+    	GitMod.AOM.logError( r.getApplicationName( ), "hello from method " + methodName );
         return null;
     }
 
     @Override
     public long doCountAll( String query, Request r )
     {
+    	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
+    	GitMod.AOM.logError( r.getApplicationName( ), "hello from method " + methodName );
         return 0;
     }
 
@@ -92,6 +104,8 @@ public class GitClassHooksTransient<T extends GitClass> implements IModelHooksTr
     @Override
     public void doPostRef( Object referencedObject, String referenceName, Request r )
     {
+    	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
+    	GitMod.AOM.logError( r.getApplicationName( ), "hello from method " + methodName );
     }
 
     /*
@@ -101,6 +115,8 @@ public class GitClassHooksTransient<T extends GitClass> implements IModelHooksTr
     @Override
     public void doDeleteRef( String refName, String refForeignId, Request r )
     {
+    	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
+    	GitMod.AOM.logError( r.getApplicationName( ), "hello from method " + methodName );
     }
 
     /*
@@ -110,6 +126,8 @@ public class GitClassHooksTransient<T extends GitClass> implements IModelHooksTr
     @Override
     public <Z extends AbstractClientDataModel> List<Z> doGetRef( String refName, String query, Request r )
     {
+    	String methodName = new Object(){}.getClass().getEnclosingMethod().getName();
+    	GitMod.AOM.logError( r.getApplicationName( ), "hello from method " + methodName );
         return null;
     }
 }
