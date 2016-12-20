@@ -31,6 +31,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.apiomat.nativemodule.*;
 
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+
 
 import com.apiomat.nativemodule.basics.*;
 import com.apiomat.nativemodule.AuthState;
@@ -213,4 +217,121 @@ public class User extends AbstractClientDataModel implements IModel<User>
         this.userName = arg;
     }
 
+    @Override
+    @SuppressWarnings("unchecked")
+    public void write( final Kryo kryo, final Output output )
+    {
+        super.write( kryo, output );
+        output.writeLong( this.dateOfBirth == null ? 0 : this.dateOfBirth.getTime() );
+        if( this.dynamicAttributes == null )
+        {
+            output.writeInt(-1);
+        }
+        else
+        {
+            output.writeInt(this.dynamicAttributes.keySet().size());
+            for(String key : this.dynamicAttributes.keySet())
+            {
+                output.writeString( key );
+                output.writeString( XSTREAM.toXML( this.dynamicAttributes.get(key) ) );
+            }
+        }
+        final String _firstName = this.firstName;
+        output.writeBoolean( _firstName != null );
+        if( _firstName != null )
+        {
+            output.writeString( _firstName );
+        }
+        final String _lastName = this.lastName;
+        output.writeBoolean( _lastName != null );
+        if( _lastName != null )
+        {
+            output.writeString( _lastName );
+        }
+        output.writeBoolean( this.loc != null );
+        if( this.loc != null)
+        {
+            output.writeDoubles( this.loc );
+        }
+        final String _password = this.password;
+        output.writeBoolean( _password != null );
+        if( _password != null )
+        {
+            output.writeString( _password );
+        }
+        final String _salt = this.salt;
+        output.writeBoolean( _salt != null );
+        if( _salt != null )
+        {
+            output.writeString( _salt );
+        }
+        final String _sessionToken = this.sessionToken;
+        output.writeBoolean( _sessionToken != null );
+        if( _sessionToken != null )
+        {
+            output.writeString( _sessionToken );
+        }
+        final String _userName = this.userName;
+        output.writeBoolean( _userName != null );
+        if( _userName != null )
+        {
+            output.writeString( _userName );
+        }
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void read( final Kryo kryo, final Input input )
+    {
+        super.read( kryo, input );
+
+        final Request req = (Request)kryo.getContext( ).get( "creq" );
+        req.toString( );
+        final long _dateOfBirth = input.readLong();
+        this.dateOfBirth = _dateOfBirth == 0 ? null : new Date(_dateOfBirth);
+        final int dynamicAttributesSize = input.readInt();
+        if(dynamicAttributesSize < 0)
+        {
+            this.dynamicAttributes = null;
+        }
+        else
+        {
+            this.dynamicAttributes = new HashMap<>();
+        }
+        for(int i=0; i<dynamicAttributesSize; i++)
+        {
+            String key = input.readString();
+            final Object value = XSTREAM.fromXML( input.readString() );
+            this.dynamicAttributes.put( key, value );
+        }
+        if( input.readBoolean() )
+        {
+            this.firstName = input.readString( );
+        }
+        if( input.readBoolean() )
+        {
+            this.lastName = input.readString( );
+        }
+        final boolean loc_isNotNull = input.readBoolean();
+        if( loc_isNotNull )
+        {
+            this.loc = input.readDoubles( 2 );
+        }
+        if( input.readBoolean() )
+        {
+            this.password = input.readString( );
+        }
+        if( input.readBoolean() )
+        {
+            this.salt = input.readString( );
+        }
+        if( input.readBoolean() )
+        {
+            this.sessionToken = input.readString( );
+        }
+        if( input.readBoolean() )
+        {
+            this.userName = input.readString( );
+        }
+    }
 }

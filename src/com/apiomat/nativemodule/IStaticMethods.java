@@ -44,14 +44,6 @@ public interface IStaticMethods
 	public void log( String applicationName, String message );
 
 	/**
-	 * Returns the app as a json-conform String
-	 *
-	 * @param applicationName
-	 * @return the json-String
-	 */
-	public String readAppConfig( String applicationName );
-
-	/**
 	 * Logs an error to the apps database
 	 *
 	 * @param applicationName
@@ -152,10 +144,7 @@ public interface IStaticMethods
 	 * @param moduleName
 	 * @param className
 	 * @return a new data model object
-	 * @deprecated When creating an object of a class that's in another module, a ClassCastException can occur.
-	 *             Use {@link #createObject(String, String, String, Request)} instead.
 	 */
-	@Deprecated
 	public IModel<?> createObject( final String applicationName, final String moduleName, final String className );
 
 	/**

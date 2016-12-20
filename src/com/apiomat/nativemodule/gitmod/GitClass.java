@@ -31,6 +31,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.apiomat.nativemodule.*;
 
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+
 
 import com.apiomat.nativemodule.basics.*;
 import com.apiomat.nativemodule.AuthState;
@@ -97,4 +101,30 @@ public class GitClass extends AbstractClientDataModel implements IModel<GitClass
         this.gitAttr = arg;
     }
 
+    @Override
+    @SuppressWarnings("unchecked")
+    public void write( final Kryo kryo, final Output output )
+    {
+        super.write( kryo, output );
+        final String _gitAttr = this.gitAttr;
+        output.writeBoolean( _gitAttr != null );
+        if( _gitAttr != null )
+        {
+            output.writeString( _gitAttr );
+        }
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void read( final Kryo kryo, final Input input )
+    {
+        super.read( kryo, input );
+
+        final Request req = (Request)kryo.getContext( ).get( "creq" );
+        req.toString( );
+        if( input.readBoolean() )
+        {
+            this.gitAttr = input.readString( );
+        }
+    }
 }

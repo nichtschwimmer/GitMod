@@ -75,8 +75,6 @@ public class Request
 	private boolean useDeltaSyncInFindByNames;
 	private boolean useDeltaSyncDeletedInResponse;
 
-	private Boolean hooksInUsedModulesEnabled;
-
 	/**
 	 * Constructor
 	 *
@@ -411,23 +409,5 @@ public class Request
 			out[ ( j++ ) ] = toDigits[ ( 0xF & data[ i ] ) ];
 		}
 		return out;
-	}
-
-	/**
-	 * @return the hooksInUsedModulesEnabled
-	 */
-	public Boolean getHooksInUsedModulesEnabled( )
-	{
-		return this.hooksInUsedModulesEnabled;
-	}
-
-	/**
-	 * Has to be set explicitly to true to secure execution of hook-methods for classes in used modules
-	 * 
-	 * @param hooksInUsedModulesEnabled the hooksInUsedModulesEnabled-flag to set
-	 */
-	public void setHooksInUsedModulesEnabled( Boolean hooksInUsedModulesEnabled )
-	{
-		this.hooksInUsedModulesEnabled = hooksInUsedModulesEnabled;
 	}
 }
